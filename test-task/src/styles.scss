@@ -1,0 +1,45 @@
+@import "./styles/mixin.scss";
+@import "./styles/fonts.scss";
+
+body {
+  font-family: "Helvetica";
+  font-weight: 400;
+  font-size: 13px;
+  background-color: #eef0f8;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.button {
+  background-color: #2e8ff0;
+  border-radius: 6px;
+  max-width: 120px;
+  color: #ffffff;
+  font-size: 14px;
+  height: 46px;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &--danger {
+    background-color: #f44682;
+  }
+
+  &--disabled {
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 0.2;
+    }
+  }
+}
+
+.ng-invalid.ng-dirty:not(form):not([formGroupName="password"]) {
+  border: 1px solid #f44682;
+}

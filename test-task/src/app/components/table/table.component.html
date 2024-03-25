@@ -1,0 +1,20 @@
+<table cellPadding="0" cellSpacing="0" class="table">
+  <thead class="table__head">
+    <tr class="table__head-row">
+      <th class="table__head-col">Username</th>
+      <th class="table__head-col">First Name</th>
+      <th class="table__head-col">Last Name</th>
+      <th class="table__head-col">Email</th>
+      <th class="table__head-col">Type</th>
+    </tr>
+  </thead>
+  <tbody class="table__body">
+    <tr *ngFor="let user of users" class="table__body-row" (click)="setUpUser.emit(user.id)">
+      <td class="table__body-col">{{ user.username }}</td>
+      <td class="table__body-col">{{ user.firstname}}</td>
+      <td class="table__body-col">{{ user.lastname}}</td>
+      <td class="table__body-col">{{ user.email}}</td>
+      <td class="table__body-col">{{ user.userType }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,117 @@
+<form [formGroup]="form" class="form">
+  <div class="form__head">
+    <h3>Create new user</h3>
+    <button class="form__head-button" (click)="closeModal.emit()">
+      <span>&#215;</span>
+    </button>
+  </div>
+  <div class="form__field">
+    <label for="name">Username*</label>
+    <input class="form__input" formControlName="username" type="text" id="name">
+    <div class="form__error">
+      <ng-container *ngIf="form.controls.username as username">
+        <span class="input-info" *ngIf="username.pending">Checking nickname...</span>
+        <span class="input-info" *ngIf="username.dirty && username.hasError('required')">This
+          field is required</span>
+        <span class="input-info" *ngIf="username.dirty && username.hasError('uniqueName')">This
+          username {{username.value}} is taken</span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form__field">
+    <label for="firstName">First Name*</label>
+    <input class="form__input" formControlName="firstname" type="text" id="firstName">
+    <div class="form__error">
+      <ng-container *ngIf="form.controls.firstname as firstname">
+        <span class="input-info" *ngIf="firstname.dirty && firstname.hasError('required')">This
+          field is required</span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form__field">
+    <label for="lastName">Last Name*</label>
+    <input class="form__input" formControlName="lastname" type="text" id="lastName">
+    <div class="form__error">
+      <ng-container *ngIf="form.controls.lastname as lastname">
+        <span class="input-info" *ngIf="lastname.dirty && lastname.hasError('required')">This
+          field is required</span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form__field">
+    <label for="email">Email*</label>
+    <div class="form__input-block">
+      <div class="form__preffix">
+        <img src="assets/icons/email.svg" alt="email icon">
+      </div>
+      <input class="form__input form__input--prefix" formControlName="email" type="text" id="email">
+    </div>
+    <div class="form__error">
+      <ng-container *ngIf="form.controls.email as email">
+        <span class="input-info" *ngIf="email.dirty && email.hasError('email')">Enter valid email</span>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form__field">
+    <label for="userType">Type*</label>
+    <select class="form__input form__input--select" formControlName="userType" id="userType">
+      <option *ngFor="let type of userTypeOptions" [value]="type">{{type}}</option>
+    </select>
+    <div class="form__error">
+      <ng-container *ngIf="form.controls.userType as userType">
+        <span class="input-info" *ngIf="userType.dirty && userType.hasError('required')">This
+          field is required</span>
+      </ng-container>
+    </div>
+  </div>
+  <div formGroupName="password">
+    <div class="form__field">
+      <label for="password">Password*</label>
+      <input class="form__input" formControlName="password" type="password" id="password">
+      <div class="form__error">
+        <ng-container *ngIf="form.controls.password.controls.password as password">
+          <span class="input-info" *ngIf="password.dirty && password.hasError('required')">This
+            field is required</span>
+          <span class="input-info" *ngIf="password.dirty && password.hasError('minlength')">
+            Password should be at least <strong>{{password.getError('minlength').requiredLength}}</strong></span>
+          <span class="input-info"
+            *ngIf="password.dirty && password.hasError('invalidPassword') && !password.hasError('minlength')">The
+            password must
+            consist of a digit and a number
+          </span>
+        </ng-container>
+      </div>
+    </div>
+    <div class="form__field">
+      <label for="confirm-password">Repeat Password*</label>
+      <input class="form__input" formControlName="confirmPassword" type="password" id="confirm-password">
+      <div class="form__error">
+        <ng-container *ngIf="form.controls.password.controls.confirmPassword as confirmPassword">
+          <span class="input-info"
+            *ngIf="confirmPassword.dirty && confirmPassword.hasError('passwordShouldMatch')">Password does not
+            match</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="userId; else elseTemplate">
+    <div class="form__footer form__footer--buttons">
+      <button class="button button--danger" (click)="deleteUser()">
+        <span>Delete</span>
+      </button>
+      <button class="button" (click)="updateUser()">
+        <span>Save</span>
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="form__footer">
+      <button class="button" [class.button--disabled]="form.invalid" (click)="submit()">
+        <span>Create</span>
+      </button>
+    </div>
+
+  </ng-template>
+
+
+</form>

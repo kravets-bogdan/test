@@ -1,0 +1,27 @@
+.wrapper {
+  border-radius: 6px;
+  height: 46px;
+  color: white;
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  padding: 0 20px;
+  width: 200px;
+  position: absolute;
+
+  &--error {
+    background-color: #ef7da0;
+  }
+
+  &--success {
+    background-color: #66bb6a;
+  }
+
+  &--start {
+    left: 0;
+  }
+
+  &--end {
+    right: 0;
+  }
+}

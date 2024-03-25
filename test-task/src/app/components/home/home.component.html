@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div [class.wrapper__grid]="showModal">
+    <div class="wrapper__block">
+      <div class="wrapper__header">
+        <ng-container *ngIf="popUpCondition()">
+          <app-popup [condition]="popUpCondition()" position="start"></app-popup>
+        </ng-container>
+
+        <button class="button" (click)=" this.showModal = !this.showModal">
+          <span>Create User</span>
+        </button>
+      </div>
+      <app-table [users]="userList" (setUpUser)="setId($event)"></app-table>
+    </div>
+    <div class="wrapper__block">
+      <div class="wrapper__header">
+      </div>
+      <app-user-form *ngIf="showModal" (closeModal)="closeModal()" [userId]="userId"></app-user-form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.table {
+  background-color: #ffffff;
+  padding-bottom: 40px;
+  width: 100%;
+
+  &__head-col {
+    text-align: start;
+    text-transform: uppercase;
+    color: #a4a4b5;
+    padding: 20px 10px;
+  }
+
+  &__body-row {
+    height: 56px;
+    background-color: #f4f5f8;
+
+    &:hover,
+    :active {
+      background-color: #dddddd;
+    }
+  }
+
+  &__body-col {
+    display: table-cell;
+    text-align: start;
+    border-bottom: 4px solid white;
+    padding: 0 10px;
+  }
+}

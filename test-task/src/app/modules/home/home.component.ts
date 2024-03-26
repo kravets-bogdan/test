@@ -1,10 +1,16 @@
 import { NgIf, NgClass } from '@angular/common';
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
-import { UsersService } from '../../services/users.service';
-import { User } from '../../types/user';
-import { TableComponent } from '../table/table.component';
-import { UserFormComponent } from '../user-form/user-form.component';
-import { PopupComponent } from '../popup/popup.component';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { UsersService } from '../../core/services/users.service';
+import { User } from '../../core/DTO/models/user';
+import { TableComponent } from '../../shared/table/table.component';
+import { UserFormComponent } from '../../shared/user-form/user-form.component';
+import { PopupComponent } from '../../shared/popup/popup.component';
 import { delay, Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
@@ -18,8 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public userList: User[] = [];
   public showModal: boolean = false;
   public userId: number = 0;
-  public popUpCondition = signal('');
-  private ngUnsubscribe = new Subject<boolean>();
+  public popUpCondition: WritableSignal<string> = signal('');
+  private ngUnsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(private usersService: UsersService) {}
 

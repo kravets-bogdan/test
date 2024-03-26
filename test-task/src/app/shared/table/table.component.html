@@ -9,12 +9,12 @@
     </tr>
   </thead>
   <tbody class="table__body">
-    <tr *ngFor="let user of users" class="table__body-row" (click)="setUpUser.emit(user.id)">
-      <td class="table__body-col">{{ user.username }}</td>
-      <td class="table__body-col">{{ user.firstname}}</td>
-      <td class="table__body-col">{{ user.lastname}}</td>
-      <td class="table__body-col">{{ user.email}}</td>
-      <td class="table__body-col">{{ user.userType }}</td>
+    <tr *ngFor="let item of items" class="table__body-row" (click)="changeRow.emit(item.id)">
+      <td class="table__body-col">{{ item.username }}</td>
+      <td class="table__body-col">{{ item.firstname}}</td>
+      <td class="table__body-col">{{ item.lastname}}</td>
+      <td class="table__body-col">{{ item.email}}</td>
+      <td class="table__body-col">{{ item.userType }}</td>
     </tr>
   </tbody>
 </table>

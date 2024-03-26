@@ -5,7 +5,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { catchError, map, Observable, of } from 'rxjs';
-import { UsersService } from '../../../services/users.service';
+import { UsersService } from '../../../core/services/users.service';
 
 @Injectable({
   providedIn: 'root',

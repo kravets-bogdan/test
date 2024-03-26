@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 enum Conditional {
   SUCCES = 'success',
@@ -13,12 +13,12 @@ enum Conditional {
   styleUrl: './popup.component.scss',
   imports: [NgClass],
 })
-export class PopupComponent implements OnChanges {
+export class PopupComponent implements OnInit {
   @Input() public condition: string = '';
   @Input() public position: string = '';
   public message: string = '';
 
-  public ngOnChanges(): void {
+  public ngOnInit(): void {
     this.getMessage();
   }
 

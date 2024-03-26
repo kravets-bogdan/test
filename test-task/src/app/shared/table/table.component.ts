@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../../types/user';
+import { User } from '../../core/DTO/models/user';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -10,6 +10,6 @@ import { NgFor } from '@angular/common';
   imports: [NgFor],
 })
 export class TableComponent {
-  @Input({ required: true }) public users: User[] = [];
-  @Output() public setUpUser: EventEmitter<number> = new EventEmitter<number>();
+  @Input({ required: true }) public items: User[] = [];
+  @Output() public changeRow: EventEmitter<number> = new EventEmitter<number>();
 }

@@ -6,10 +6,10 @@ import {
   Output,
 } from '@angular/core';
 import { Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { User, UserType } from '../../types/user';
+import { User, UserType } from '../../core/DTO/models/user';
 import { NgFor, NgIf } from '@angular/common';
 import { passwordShouldMatch } from './validators/password-should-match.validator';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../core/services/users.service';
 import { UniqueUsernameValidator } from './validators/unique-username.validator';
 import { passwordStrengthValidator } from './validators/digit-letter-validator';
 

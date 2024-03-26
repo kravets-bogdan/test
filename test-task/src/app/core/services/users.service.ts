@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../types/user';
+import { User } from '../DTO/models/user';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 @Injectable({
@@ -164,11 +164,9 @@ export class UsersService {
   }
 
   public updateUser(updatedUser: User): void {
+    console.log('updatedUser: ', updatedUser);
     this.userList = this.userList.map((user) => {
-      if (user.id === updatedUser.id) {
-        return { ...user, ...updatedUser };
-      }
-      return user;
+      return user.id === updatedUser.id ? { ...user, ...updatedUser } : user;
     });
     this.showPopup.next('success');
     this.updateUserList.next(null);
